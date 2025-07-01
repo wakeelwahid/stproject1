@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -25,24 +25,20 @@ SECRET_KEY = 'django-insecure-ct%(g*h0_p1-rt2h+g4oc4y!$tipv_&8!^nht7t1rh07_25r3)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-  
     'corsheaders',
     'rest_framework',
     'stapp',
-
 ]
 
 MIDDLEWARE = [
@@ -54,30 +50,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-    
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
-
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
-
+# CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
-
 
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['tempates'],
+        'DIRS': ['templates'],  # Fixed typo here
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,28 +75,34 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'st_db',
-        'USER': 'postgres',
-        'PASSWORD': 'Wakeel@321',
-        'HOST': 'localhost',
-        'PORT': '5432',
+# For Render, use dj_database_url for dynamic DB config
+try:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgresql://postgres:Wakeel@321@localhost:5432/st_db'
+        )
     }
-}
+except ImportError:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'st_db',
+            'USER': 'postgres',
+            'PASSWORD': 'Wakeel@321',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 AUTH_USER_MODEL = 'stapp.User'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -133,7 +122,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -145,22 +133,19 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 AUTHENTICATION_BACKENDS = [
-    'stapp.backends.MobileBackend',   # <- Add this line
+    'stapp.backends.MobileBackend',
     'django.contrib.auth.backends.ModelBackend',
     'stapp.authentication.UsernameOrMobileBackend',
-    
 ]
-
