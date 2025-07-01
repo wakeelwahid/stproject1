@@ -1,0 +1,314 @@
+:root {
+  --primary-bg: #0f0f1a;
+  --secondary-bg: #1a1a2e;
+  --text-color: #ffffff;
+  --text-secondary: #b8b8b8;
+  --neon-gold: #FFD700;
+  --neon-blue: #00f3ff;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.game-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  background: var(--primary-bg);
+  overflow: hidden;
+}
+
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+.time-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 0.8rem 1.5rem;
+  margin: 1rem auto;
+  width: fit-content;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.clock-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-icon {
+  color: var(--neon-gold);
+  font-size: 1.2rem;
+}
+
+.time-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.game-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.game-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  min-height: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--card-bg);
+  z-index: -2;
+}
+
+.game-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--card-accent);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:hover::after {
+  opacity: 1;
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--card-color) 0%, transparent 70%);
+  z-index: -1;
+}
+
+.card-content {
+  padding: 1.2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.game-icon {
+  font-size: 1.8rem;
+  color: var(--card-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.game-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.game-schedule {
+  margin: 0.8rem 0;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.8rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  flex-grow: 1;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.schedule-item:last-child {
+  margin-bottom: 0;
+}
+
+.schedule-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.schedule-time {
+  font-weight: 600;
+  color: white;
+}
+
+.game-status {
+  margin-top: 0.8rem;
+}
+
+.status-message {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(145deg, var(--card-color), #000);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.action-btn:hover::before {
+  left: 100%;
+}
+
+.action-btn.locked {
+  background: linear-gradient(145deg, #666, #333);
+  cursor: not-allowed;
+}
+
+.game-card.locked {
+  filter: grayscale(0.7);
+  opacity: 0.8;
+}
+
+.card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--card-color), transparent, var(--card-color));
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:hover .card-border {
+  opacity: 0.7;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .game-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  
+  .game-card {
+    min-height: 200px;
+  }
+  
+  .game-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.6rem;
+  }
+  
+  .game-title {
+    font-size: 1rem;
+  }
+  
+  .schedule-item {
+    font-size: 0.75rem;
+  }
+  
+  .action-btn {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .game-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .game-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .game-card {
+    min-height: 240px;
+  }
+}

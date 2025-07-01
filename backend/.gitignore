@@ -1,0 +1,27 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Django DB
+db.sqlite3
+*.sqlite3
+
+# VSCode
+.vscode/
+
+# OS files
+.DS_Store
+
+# Env
+.env
+.env.*
+
+# Migrations cache
+*.py[cod]
+*.so
+
+# Backup files
+*.bak
+*.swp

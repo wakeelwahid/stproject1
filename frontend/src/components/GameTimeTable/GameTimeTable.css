@@ -1,0 +1,168 @@
+
+.timetable-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.timetable-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--dark-bg), var(--nav-bg));
+  border-radius: 15px;
+  border: 2px solid var(--gold);
+}
+
+.timetable-header h2 {
+  color: var(--gold);
+  margin: 0;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.current-time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.timetable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.game-schedule-card {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  padding: 20px;
+  border: 2px solid;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.game-schedule-card.open {
+  border-color: var(--green);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.game-schedule-card.locked {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.2);
+}
+
+.game-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+.status-icon.open {
+  color: var(--green);
+}
+
+.status-icon.locked {
+  color: #ff6b6b;
+}
+
+.timing-info {
+  margin-bottom: 15px;
+}
+
+.timing-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timing-label {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.timing-value {
+  color: white;
+  font-weight: bold;
+}
+
+.next-opening {
+  background: rgba(255, 215, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.next-label {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.next-time {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.game-note {
+  margin-bottom: 15px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.game-note small {
+  color: #bbb;
+  font-style: italic;
+}
+
+.status-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status-badge.open {
+  background: rgba(0, 255, 0, 0.2);
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.status-badge.locked {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .timetable-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .timetable-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timing-row {
+    font-size: 0.9rem;
+  }
+}
