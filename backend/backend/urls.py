@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 # Also add API prefix to stapp URLs
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('api/', include('stapp.urls')),
 ]
 
