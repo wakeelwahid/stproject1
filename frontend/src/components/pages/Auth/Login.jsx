@@ -42,10 +42,13 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login/", {
-        mobile,
-        password,
-      });
+      const response = await axios.post(
+        "https://stproject1.onrender.com/api/login/",
+        {
+          mobile,
+          password,
+        }
+      );
 
       localStorage.setItem("token", response.data.access);
       localStorage.setItem("refreshToken", response.data.refresh);
