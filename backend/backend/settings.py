@@ -53,10 +53,11 @@ MIDDLEWARE = [
 ]
 
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:3000",
+    "https://stgames.netlify.app",  # ✅ Add your Netlify URL
 ]
 
 ROOT_URLCONF = 'backend.urls'
