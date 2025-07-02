@@ -10,7 +10,7 @@ export default defineConfig({
     proxy: {
       // Localhost backend ke liye proxy lagao
       '/api': {
-        target: 'http://127.0.0.1:8000',
+        target: 'https://stproject1.onrender.com',
         changeOrigin: true,
         secure: false,
       }

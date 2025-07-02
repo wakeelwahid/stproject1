@@ -41,7 +41,7 @@ const BetRecordsPanel = () => {
         return;
       }
       const res = await fetch(
-        `http://localhost:8000/api/admin/bets/?game=${encodeURIComponent(selectedGame)}`,
+        `https://stproject1.onrender.com/api/admin/bets/?game=${encodeURIComponent(selectedGame)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
