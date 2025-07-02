@@ -15,7 +15,7 @@ const GameHistory = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          "http://127.0.0.1:8000/api/view-bets-history/",
+          "https://stproject1.onrender.com/api/view-bets-history/",
           {
             headers: {
               Authorization: `Bearer ${token}`,

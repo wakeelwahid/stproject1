@@ -26,7 +26,7 @@ const PaymentPage = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/deposit-requests/", // Make sure this matches your Django URL
+        "https://stproject1.onrender.com/api/deposit-requests/", // Make sure this matches your Django URL
         {
           amount: amount,
           utr_number: utr,

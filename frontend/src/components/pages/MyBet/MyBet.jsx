@@ -11,7 +11,7 @@ const MyBet = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          "http://127.0.0.1:8000/api/current-session/",
+          "https://stproject1.onrender.com/api/current-session/",
           {
             headers: {
               Authorization: `Bearer ${token}`,

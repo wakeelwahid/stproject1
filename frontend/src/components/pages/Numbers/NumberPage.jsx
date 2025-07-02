@@ -106,7 +106,7 @@ function NumberPage() {
           amount: bet.amount,
         };
 
-        await axios.post("http://127.0.0.1:8000/api/place-bet/", payload, {
+        await axios.post("https://stproject1.onrender.com/api/place-bet/", payload, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

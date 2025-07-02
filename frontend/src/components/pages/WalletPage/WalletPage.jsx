@@ -39,8 +39,8 @@ const WalletPage = () => {
         };
 
         const [walletRes, referralRes] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/balance/", { headers }),
-          axios.get("http://127.0.0.1:8000/api/user/my-referrals/", { headers }),
+          axios.get("https://stproject1.onrender.com/api/balance/", { headers }),
+          axios.get("https://stproject1.onrender.com/api/user/my-referrals/", { headers }),
         ]);
 
         setWallet(walletRes.data);

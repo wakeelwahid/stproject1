@@ -1,7 +1,8 @@
 // src/utils/api.js
 import axios from "axios";
 
-const BASE_URL = "http://127.0.0.1:8000/api";
+
+const BASE_URL = "https://stproject1.onrender.com/api";
 
 const authHeaders = () => ({
   headers: {
@@ -59,7 +60,7 @@ export const fetchTransactions = async () => {
 export const submitUTR = async (transaction_id, utr_number) => {
   const token = localStorage.getItem("access_token");
   return await axios.post(
-    "http://127.0.0.1:8000/api/wallet/submit-utr/",
+    "https://stproject1.onrender.com/api/wallet/submit-utr/",
     { transaction_id, utr_number },
     {
       headers: { Authorization: `Bearer ${token}` },

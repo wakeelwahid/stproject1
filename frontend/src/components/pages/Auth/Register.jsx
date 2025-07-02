@@ -89,7 +89,7 @@ const Register = () => {
 
     try {
       setError(""); // clear previous errors
-      await axios.post("http://127.0.0.1:8000/api/register/", {
+      await axios.post("https://stproject1.onrender.com/api/register/", {
         username: formData.username.trim(),
         mobile: formData.mobile.trim(),
         email: formData.email?.trim() || "",

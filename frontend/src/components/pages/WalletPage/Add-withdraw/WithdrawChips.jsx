@@ -31,7 +31,7 @@ const WithdrawChips = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/withdraw/",
+        "https://stproject1.onrender.com/api/withdraw/",
         { amount: parseFloat(amount) },
         {
           headers: {

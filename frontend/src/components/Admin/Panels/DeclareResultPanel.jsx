@@ -18,7 +18,7 @@ const DeclareResultPanel = () => {
   const declareResult = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/admin/declare-result/",
+        "https://stproject1.onrender.com/api/admin/declare-result/",
         {
           game_name: selectedGame.trim().toLowerCase(),
           winning_number: number,
@@ -42,7 +42,7 @@ const DeclareResultPanel = () => {
   const undoResult = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/admin/undo_result/",
+        "https://stproject1.onrender.com/api/admin/undo_result/",
         {
           game_name: selectedGame.trim().toLowerCase(),
         },

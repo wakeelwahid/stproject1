@@ -20,10 +20,10 @@ const Refers = () => {
         }
 
         const [referralRes, walletRes] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/user/my-referrals/", {
+          axios.get("https://stproject1.onrender.com/api/user/my-referrals/", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://127.0.0.1:8000/api/balance/", {
+          axios.get("https://stproject1.onrender.com/api/balance/", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
