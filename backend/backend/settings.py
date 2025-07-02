@@ -81,26 +81,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
-# For Render, use dj_database_url for dynamic DB config
-try:
-    import dj_database_url
-    DATABASES = {
-        'default': dj_database_url.config(
-            default='postgresql://postgres:Wakeel@321@localhost:5432/st_db'
-        )
-    }
-except ImportError:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'st_db',
-            'USER': 'postgres',
-            'PASSWORD': 'Wakeel@321',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
+import dj_database_url
 
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+}
 AUTH_USER_MODEL = 'stapp.User'
 
 REST_FRAMEWORK = {
